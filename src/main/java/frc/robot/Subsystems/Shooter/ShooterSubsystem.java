@@ -1,4 +1,4 @@
-package frc.robot.Subsystems.Shooter;
+package frc.robot.Subsystems.shooter;
 
 import com.ctre.phoenix6.controls.VoltageOut;
 import com.ctre.phoenix6.hardware.TalonFX;

@@ -1,4 +1,4 @@
-package frc.robot.Subsystems.Grapper;
+package frc.robot.Subsystems.grapper;
 
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.Solenoid;
