@@ -1,34 +1,33 @@
-package frc.robot.Subsystems.intake;
+package frc.robot.Subsystems.Climb;
 
 import com.ctre.phoenix6.controls.VoltageOut;
 import com.ctre.phoenix6.hardware.TalonFX;
 
 import frc.robot.lib.Subsystem;
 
-public class IntakeSubsystem extends Subsystem {
-    private final TalonFX intakeMotor = new TalonFX(0);
+public class ClimbSubsystem extends Subsystem {
+    private final TalonFX ClimbMotor = new TalonFX(1);
     private final VoltageOut Voltage = new VoltageOut(0).withEnableFOC(true);
-    private static IntakeSubsystem instance;
+    private static ClimbSubsystem instance;
 
-    public static IntakeSubsystem getInstance() {
-        if (instance == null) {
-            instance = new IntakeSubsystem();
-        }
+    public static ClimbSubsystem getInstance() {
+        if (instance == null)
+            instance = new ClimbSubsystem();
         return instance;
     }
 
-    public static IntakeSubsystem subsystem() {
+    public static ClimbSubsystem subsystem() {
         return getInstance();
     }
-    public IntakeSubsystem(){
-        intakeMotor.getConfigurator().apply(IntakeConfig.config());
+    public ClimbSubsystem(){
+        ClimbMotor.getConfigurator().apply(ClimbConfig.config());
     }
 
     private state currentState = state.idle;
 
     public enum state {
         idle(0),
-        intaking(1);
+        climbing(1);
 
         public int stateNum;
 
@@ -44,9 +43,9 @@ public class IntakeSubsystem extends Subsystem {
                     () -> emptyMethod()
             },
             {
-                    () -> intakingIMethods(),
+                    () -> climbingIMethods(),
                     () -> emptyMethod(),
-                    () -> intakingEMethods()
+                    () -> climbingEMethods()
             }
     };
     public void changeState(state newState) {
@@ -55,12 +54,10 @@ public class IntakeSubsystem extends Subsystem {
         methods[currentState.stateNum][0].run();
         super.activeStatePeriodic = methods[newState.stateNum][1];
     }
-
-    private void intakingIMethods() {
-        intakeMotor.setControl(Voltage.withOutput(8.0));
+    public void climbingIMethods(){
+        ClimbMotor.setControl(Voltage.withOutput(8.0));
     }
-
-    private void intakingEMethods() {
-        intakeMotor.setControl(Voltage.withOutput(0));
+    public void climbingEMethods(){
+        ClimbMotor.setControl(Voltage.withOutput(0));
     }
 }

@@ -1,21 +1,21 @@
-package frc.robot.Subsystems.grapper;
+package frc.robot.Subsystems.Grapper;
 
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.Solenoid;
 import frc.robot.lib.Subsystem;
 
-public class Grappersubsystem extends Subsystem {
+public class GrapperSubsystem extends Subsystem {
     Solenoid solenoid = new Solenoid(PneumaticsModuleType.CTREPCM, 0);
-    private static Grappersubsystem instance;
+    private static GrapperSubsystem instance;
 
-    public static Grappersubsystem getInstance() {
+    public static GrapperSubsystem getInstance() {
         if (instance == null) {
-            instance = new Grappersubsystem();
+            instance = new GrapperSubsystem();
         }
         return instance;
     }
 
-    public static Grappersubsystem subsystem() {
+    public static GrapperSubsystem subsystem() {
         return getInstance();
     }
 
@@ -44,7 +44,12 @@ public class Grappersubsystem extends Subsystem {
                     () -> grappingEMethods()
             }
     };
-
+public void changeState(state newState) {
+        methods[currentState.stateNum][2].run();
+        currentState = newState;
+        methods[currentState.stateNum][0].run();
+        super.activeStatePeriodic = methods[newState.stateNum][1];
+    }
     private void grappingIMethods() {
         solenoid.set(true);
     }

@@ -1,4 +1,4 @@
-package frc.robot.Subsystems.shooter;
+package frc.robot.Subsystems.Shooter;
 
 import com.ctre.phoenix6.controls.VoltageOut;
 import com.ctre.phoenix6.hardware.TalonFX;
@@ -23,6 +23,14 @@ public class ShooterSubsystem extends Subsystem {
 
     public static ShooterSubsystem subsystem() {
         return getInstance();
+    }
+    public ShooterSubsystem(){
+        shooterMotor1.getConfigurator().apply(ShooterConfig.config());
+        shooterMotor2.getConfigurator().apply(ShooterConfig.config());
+        shooterMotor3.getConfigurator().apply(ShooterConfig.config());
+        shooterMotor4.getConfigurator().apply(ShooterConfig.config());
+        shooterMotor5.getConfigurator().apply(ShooterConfig.config());
+
     }
 
     private state currentState = state.idle;
@@ -50,6 +58,12 @@ public class ShooterSubsystem extends Subsystem {
             ()->shootingEMethods()
         }
     };
+    public void changeState(state newState) {
+        methods[currentState.stateNum][2].run();
+        currentState = newState;
+        methods[currentState.stateNum][0].run();
+        super.activeStatePeriodic = methods[newState.stateNum][1];
+    }
     private void shootingIMethods(){
         shooterMotor1.setControl(Voltage.withOutput(8.0));
         shooterMotor2.setControl(Voltage.withOutput(8.0));

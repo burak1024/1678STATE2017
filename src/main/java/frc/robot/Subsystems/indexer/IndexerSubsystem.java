@@ -22,6 +22,12 @@ public class IndexerSubsystem extends Subsystem {
     public static IndexerSubsystem subsystem() {
         return getInstance();
     }
+    public IndexerSubsystem(){
+        indexerMotor1.getConfigurator().apply(IndexerConfig.config());
+        indexerMotor2.getConfigurator().apply(IndexerConfig.config2());
+        indexerMotor3.getConfigurator().apply(IndexerConfig.config2());
+
+    }
 
     private state currentState = state.idle;
 
@@ -48,6 +54,12 @@ public class IndexerSubsystem extends Subsystem {
                     () -> indexingEMethods()
             }
     };
+    public void changeState(state newState) {
+        methods[currentState.stateNum][2].run();
+        currentState = newState;
+        methods[currentState.stateNum][0].run();
+        super.activeStatePeriodic = methods[newState.stateNum][1];
+    }
 
     private void indexingIMethods() {
         indexerMotor1.setControl(Voltage.withOutput(8.0));
