@@ -4,8 +4,8 @@ import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Subsystems.Climb.ClimbSubsystem;
-import frc.robot.Subsystems.Grapper.GrapperSubsystem;
-import frc.robot.Subsystems.Shooter.ShooterSubsystem;
+import frc.robot.Subsystems.grapper.GrapperSubsystem;
+import frc.robot.Subsystems.shooter.ShooterSubsystem;
 import frc.robot.Subsystems.indexer.IndexerSubsystem;
 import frc.robot.Subsystems.intake.IntakeSubsystem;
 

@@ -6,7 +6,7 @@ import com.ctre.phoenix6.hardware.TalonFX;
 import frc.robot.lib.Subsystem;
 
 public class ClimbSubsystem extends Subsystem {
-    private final TalonFX ClimbMotor = new TalonFX(1);
+    private final TalonFX ClimbMotor = new TalonFX(ClimbConstants.CLIMB_MOTOR_ID);
     private final VoltageOut Voltage = new VoltageOut(0).withEnableFOC(true);
     private static ClimbSubsystem instance;
 

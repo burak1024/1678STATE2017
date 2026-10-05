@@ -1,4 +1,4 @@
-package frc.robot.Subsystems.Shooter;
+package frc.robot.Subsystems.shooter;
 
 public class ShooterConstants {
     public static final double STATOR_CURRENT_LIMIT = 80.0;

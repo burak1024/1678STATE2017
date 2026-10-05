@@ -1,4 +1,4 @@
-package frc.robot.Subsystems.Shooter;
+package frc.robot.Subsystems.shooter;
 
 import com.ctre.phoenix6.controls.VoltageOut;
 import com.ctre.phoenix6.hardware.TalonFX;
@@ -6,11 +6,11 @@ import com.ctre.phoenix6.hardware.TalonFX;
 import frc.robot.lib.Subsystem;
 
 public class ShooterSubsystem extends Subsystem {
-    private final TalonFX shooterMotor1 = new TalonFX(0);
-    private final TalonFX shooterMotor2 = new TalonFX(0);
-    private final TalonFX shooterMotor3 = new TalonFX(0);
-    private final TalonFX shooterMotor4 = new TalonFX(0);
-    private final TalonFX shooterMotor5 = new TalonFX(0);
+    private final TalonFX shooterMotor1 = new TalonFX(ShooterConstants.SHOOTER_MOTOR_ID1);
+    private final TalonFX shooterMotor2 = new TalonFX(ShooterConstants.SHOOTER_MOTOR_ID2);
+    private final TalonFX shooterMotor3 = new TalonFX(ShooterConstants.SHOOTER_MOTOR_ID3);
+    private final TalonFX shooterMotor4 = new TalonFX(ShooterConstants.SHOOTER_MOTOR_ID4);
+    private final TalonFX shooterMotor5 = new TalonFX(ShooterConstants.SHOOTER_MOTOR_ID5);
     private final VoltageOut Voltage = new VoltageOut(0).withEnableFOC(true);
     private static ShooterSubsystem instance;
 

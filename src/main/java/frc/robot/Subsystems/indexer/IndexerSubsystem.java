@@ -6,9 +6,9 @@ import com.ctre.phoenix6.hardware.TalonFX;
 import frc.robot.lib.Subsystem;
 
 public class IndexerSubsystem extends Subsystem {
-    private final TalonFX indexerMotor1 = new TalonFX(0);
-    private final TalonFX indexerMotor2 = new TalonFX(0);
-    private final TalonFX indexerMotor3 = new TalonFX(0);
+    private final TalonFX indexerMotor1 = new TalonFX(IndexerConstants.INDEX_MOTOR_ID1);
+    private final TalonFX indexerMotor2 = new TalonFX(IndexerConstants.INDEX_MOTOR_ID2);
+    private final TalonFX indexerMotor3 = new TalonFX(IndexerConstants.INDEX_MOTOR_ID3);
     private final VoltageOut Voltage = new VoltageOut(0).withEnableFOC(true);
     private static IndexerSubsystem instance;
 

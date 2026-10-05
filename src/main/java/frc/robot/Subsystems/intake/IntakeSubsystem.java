@@ -6,7 +6,7 @@ import com.ctre.phoenix6.hardware.TalonFX;
 import frc.robot.lib.Subsystem;
 
 public class IntakeSubsystem extends Subsystem {
-    private final TalonFX intakeMotor = new TalonFX(0);
+    private final TalonFX intakeMotor = new TalonFX(IntakeConstants.INTAKE_MOTOR_ID);
     private final VoltageOut Voltage = new VoltageOut(0).withEnableFOC(true);
     private static IntakeSubsystem instance;
 
